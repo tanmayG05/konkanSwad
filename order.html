@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>order Menu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url(assets/images/shop1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .category {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            padding: 30px;
+            width: 30%;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .category:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .category a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .category h2 {
+            margin: 0;
+        }
+
+        header {
+            background-color: #FF6347;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #bd {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid black;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: 0 auto;
+            width: fit-content;
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 9ch;
+            background-color: rgb(201, 156, 156);
+            background-size: cover;
+            padding: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="home.html">
+            <img src="assets/images/logo.png" alt="Logo" height="70" style="border-radius: 50px;">
+        </a>
+        <h1 id="bd">कोकणस्वाद मेजवानी</h1>
+    </header>
+    <section>
+        <div class="category" onclick="showCategory('konkan Swad Special Thali')">
+            <a href="1KSST.html">
+                <h2>konkan Swad Special Thali 🍽️</h2>
+            </a>
+        </div>
+
+        <div class="category" onclick="showCategory('Gomantak Special Fry')">
+            <a href="2GSF.html">
+                <h2>Gomantak Special Fry 🍤</h2>
+            </a>
+        </div>
+
+        <div class="category" onclick="showCategory('Konkan Swad Special Crabs ')">
+            <a href="3KSSC.html">
+                <h2>Konkan Swad Special Crabs  🦀</h2>
+            </a>
+        </div>
+
+        <div class="category" onclick="showCategory('Konkani Special Items')">
+            <a href="4KSI.html">
+                <h2>Konkani Special Items 🫓 </h2>
+            </a>
+        </div>
+
+        <div class="category" onclick="showCategory('Gomantak Special Fish Main Course')">
+            <a href="5GSFMC.html">
+                <h2>Gomantak Special Fish Main Course🦈</h2>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 KonkanSwad. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

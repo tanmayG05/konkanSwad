@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery Cart</title>
+    <style>
+        /* Existing styles... */
+
+        /* Add animation for payment mode buttons on hover */
+        .payment-option:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Add animation for selected payment mode button */
+        .payment-option.selected {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /*   */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+           background-image: url(assets/images/ord1.jpeg);
+           background-repeat: no-repeat;
+           background-size: cover;
+            color: #333;
+        }
+
+        header {
+            background-color: #FF6347;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+             display: flex;
+              align-items: center;
+            justify-content: space-between;
+            margin-right: 20px;
+        }
+
+
+
+        #bd {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            background-color: #fff;
+            margin: 0 auto;
+            width: fit-content;
+            color: #333;
+
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+/* Update styles for the list items and the "Remove" button */
+/* Update styles for the list items and the "Remove" button */
+/* Update styles for the list items and the "Remove" button */
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style the "Remove" button */
+li button.remove-button {
+    background-color: #d58b3d; /* Button background color */
+    color: black; /* Button text color */
+    border: none;
+    border-radius: 3px;
+    padding: 6px 1ch; /* Adjust padding and width */
+    font-size: 12px; /* Adjust font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Add a hover effect for the "Remove" button */
+li button.remove-button:hover {
+    background-color: #b86409; /* Change the background color on hover */
+    color: #fff7f7;
+}
+
+
+        .total {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #dc4e35;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        /* New styles for address and payment sections */
+        #address-section,
+        #payment-section {
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Updated styles for payment options */
+        .payment-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+
+        }
+
+        .payment-option {
+            flex: 0 0 150px;
+            padding: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+
+            transition: transform 0.2s, box-shadow 0.2s;
+
+
+        }
+      
+
+        .payment-option:hover {
+    transform: none;
+    transition: none;
+    color: black;
+    transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+
+}
+
+/* Remove hover effect for selected payment mode button */
+.payment-option.selected {
+    transform: none;
+    transition: none;
+}
+    /* Hover effect for the "Proceed to Payment" button */
+    button:hover {
+        background-color: #45a049; /* Change the background color on hover */
+    }
+
+        .selected {
+            background-color: #45a049;
+        }
+
+        .payment-steps {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .upi-options {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .upi-option {
+            flex: 0 0 80px; /* Adjust the width to your desired size */
+    margin-right: 10px;
+    padding: 10px;
+    background-color: transparent;
+    color: #555;
+    cursor: pointer;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    font-size: 16px;
+        }
+        .upi-option:hover {
+    background-color: transparent;
+}
+
+.upi-option img {
+        max-width: 100%;
+        max-height: 60px; /* Adjust the maximum height to your desired size */
+        margin-bottom: 5px; /* Add some bottom margin for spacing */
+    }
+
+        .tip-option {
+            margin-top: 10px;
+        }
+
+        .tip-option label {
+            color: #555;
+        }
+
+        .tip-option input {
+            width: 60%;
+        }
+/* QR img */
+        #qr-code img {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px; /* Adjust the maximum height to your desired size */
+    margin-top: 10px;
+}
+
+/* back  */
+/* Back button styles */
+#back-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: rgb(40, 116, 167); /* Change the background color */
+    color: #fff; /* Change the text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* Hover effect for the back button */
+#back-button:hover {
+    background-color: #1482b1; /* Change the background color on hover */
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="home.html">
+            <img src="assets/images/logo.png" alt="Logo" height="70" style="border-radius: 50px;">
+        </a>
+        <h1 id="bd">कोकणस्वाद</h1>
+    </header>
+
+    <div class="container">
+        <h2>Cart</h2>
+        <ul id="cart-items"></ul>
+        <div id="total-display"></div>
+
+        <!-- Address input section -->
+        <div id="address-section">
+            <!-- <h2>Delivery Address</h2> -->
+            <label for="firstName">Enter your First Name:</label>
+<input type="text" id="firstName" placeholder="Enter your first name">
+
+<label for="lastName">Enter your Last Name:</label>
+<input type="text" id="lastName" placeholder="Enter your last name">
+
+<label for="email">Enter your Email:</label>
+    <input type="email" id="email"  name="email"  placeholder="Enter your email">
+
+    <label for="phoneNumber">Enter your Mobile Number:</label>
+    <input type="tel" id="phoneNumber"    placeholder="Enter your mobile number">
+
+            <label for="address">Enter your address:</label>
+            <textarea id="address" rows="4" placeholder="Enter your delivery address"></textarea>
+            <button onclick="proceedToPayment()">Proceed to Payment</button>
+        </div>
+
+        <!-- Payment section -->
+        <div id="payment-section" style="display: none;">
+            <h2>Select Payment Mode</h2>
+
+            <!-- Payment options buttons -->
+            <div class="payment-options">
+                <button id="card-option" class="payment-option" onclick="selectPaymentMode('card')">Credit/Debit
+                    Card</button>
+                <button id="upi-option" class="payment-option" onclick="selectPaymentMode('upi')">UPI</button>
+                <button id="cod-option" class="payment-option" onclick="selectPaymentMode('cod')">Cash on Delivery
+                    (COD)</button>
+            </div>
+
+            <!-- Payment steps for each option -->
+            <div id="card-steps" class="payment-steps">
+                <!-- Steps for card payment mode -->
+                <label for="card-type">Select Card Type:</label>
+                <select id="card-type">
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">MasterCard</option>
+                    <option value="amex">American Express</option>
+                </select>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" placeholder="Enter your card number">
+                <!-- Add more steps as needed for card payment -->
+            </div>
+
+            <div id="upi-steps" class="payment-steps">
+                <!-- Steps for UPI payment mode -->
+                <!-- UPI options buttons with images -->
+                <div id="upi-options" class="upi-options">
+                    <button class="upi-option" onclick="selectUPIOption('gpay')">
+                        <img src="assets/images/GooglePay.png" alt="Google Pay">
+                    </button>
+                    <button class="upi-option" onclick="selectUPIOption('paytm')">
+                        <img src="assets/images/paytm.png" alt="Paytm">
+                    </button>
+                    <button class="upi-option" onclick="selectUPIOption('phonepe')">
+                        <img src="assets/images/phonepe.png" alt="PhonePe">
+                    </button>
+                </div>
+
+                <!-- UPI information input -->
+                <div id="upi-info" style="display: none;">
+                    <p>Selected UPI Option: <span id="selected-upi-option"></span></p>
+                    <label for="upi-id">Enter UPI ID or Scan QR Code:</label>
+                    <input type="text" id="upi-id" placeholder="Enter UPI ID">
+                    <button onclick="showQRCode()">Scan QR Code</button>
+                    <div id="qr-code" style="display: none;">
+                        <!-- Placeholder for the QR code image -->
+                        <img src="" alt="QR Code">
+                        <!-- Additional steps for UPI payment -->
+                        <label for="upi-pin">Enter UPI PIN:</label>
+                        <input type="password" id="upi-pin" placeholder="Enter UPI PIN">
+                    </div>
+                </div>
+                <!-- Add more steps as needed for UPI payment -->
+            </div>
+
+            <div id="cod-steps" class="payment-steps">
+                <!-- Steps for COD payment mode -->
+                <label for="delivery-address">Delivery Address:</label>
+                <textarea id="delivery-address" rows="4" placeholder="Enter delivery address"></textarea>
+            </div>
+
+            <!-- Tip option for all payment modes -->
+            <div class="tip-option">
+                <label for="tip-amount">Tip for Delivery Boy (in Rupees):</label>
+                <input type="number" id="tip-amount" placeholder="Enter tip amount">
+            </div>
+            <button id="back-button" onclick="goBack()">Back</button>
+
+            <button onclick="confirmOrder()">Confirm Order</button>
+        </div>
+    </div>
+
+    <div id="confirmation-message" style="display: none; text-align: center; color: green; margin-top: 20px;">
+        Order Confirmed! Thank you for your purchase.
+    </div>
+
+    <footer style="text-align: center;">
+        <p>© 2024 KonkanSwad. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Your existing JavaScript code...
+
+//back 
+// Function to go back to the previous page
+// Function to go back to the previous page
+function goBack() {
+    window.location.href = document.referrer;
+}
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Retrieve existing cart items
+            const cartList = document.getElementById('cart-items');
+            let total = 0;
+
+            cartItems.forEach(item => {
+                const itemTotal = item.quantity * item.price;
+                total += itemTotal;
+                cartList.innerHTML += `
+            <li>${item.name} - Quantity: ${item.quantity} - $${itemTotal.toFixed(2)}
+                <button class="remove-button" onclick="removeItem('${item.id}')">Remove</button>
+            </li>`;
+            });
+
+            // Display total
+            const totalDisplay = document.getElementById('total-display');
+            totalDisplay.innerHTML = `Total: $${total.toFixed(2)}`;
+        });
+
+        // Function to remove an item from the cart
+        function removeItem(itemId) {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems'));
+            cartItems = cartItems.filter(item => item.id !== itemId);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            // Refresh the page to reflect the changes
+            location.reload();
+        }
+        function proceedToOrder() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            // Send cartItems to the server
+            fetch('/save-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cartItems: cartItems })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Cart data saved successfully, you can redirect to a success page or do something else
+                        console.log('Cart data saved successfully');
+                        // Optionally, clear the cart after successful save
+                        localStorage.removeItem('cartItems');
+                    } else {
+                        // Handle errors
+                        console.error('Error saving cart data');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Validate the phone number
+function isValidPhoneNumber(phoneNumber) {
+    const phoneNumberRegex = /^\d{10}$/;
+    return phoneNumberRegex.test(phoneNumber);
+}
+
+function proceedToPayment() {
+    const emailInput = document.getElementById('email');
+    const email = emailInput.value.trim();
+
+    // Validate the email address
+    if (!isValidEmail(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    const phoneNumberInput = document.getElementById('phoneNumber');
+    const phoneNumber = phoneNumberInput.value.trim();
+
+    // Validate the phone number
+    if (!isValidPhoneNumber(phoneNumber)) {
+        alert('Please enter a valid 10-digit phone number.');
+        return;
+    }
+
+    const address = document.getElementById('address').value;
+
+    // Hide address section and show payment section
+    document.getElementById('address-section').style.display = 'none';
+    document.getElementById('payment-section').style.display = 'block';
+}
+
+        function isValidEmail(email) {
+    // Use a simple regular expression for basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+        function selectPaymentMode(paymentMode) {
+            // Reset all buttons to default state
+            const paymentOptions = ['card', 'upi', 'cod'];
+            paymentOptions.forEach(option => {
+                const optionButton = document.getElementById(`${option}-option`);
+                const optionSteps = document.getElementById(`${option}-steps`);
+                optionButton.classList.remove('selected');
+                optionSteps.style.display = 'none';
+            });
+
+            // Highlight the selected button
+            const selectedButton = document.getElementById(`${paymentMode}-option`);
+            selectedButton.classList.add('selected');
+
+            // Show steps for the selected payment mode
+            const selectedSteps = document.getElementById(`${paymentMode}-steps`);
+            selectedSteps.style.display = 'block';
+
+            // Hide UPI options if not selected
+            const upiOptions = document.getElementById('upi-options');
+            const upiInfo = document.getElementById('upi-info');
+            upiOptions.style.display = paymentMode === 'upi' ? 'block' : 'none';
+            upiInfo.style.display = paymentMode === 'upi' ? 'none' : 'none';
+        }
+
+        function selectUPIOption(upiOption) {
+            // Display the selected UPI option
+            document.getElementById('selected-upi-option').innerText = upiOption;
+            // Perform actions based on the selected UPI option
+            console.log(`Selected UPI Option: ${upiOption}`);
+            // Show UPI information input when an option is selected
+            document.getElementById('upi-info').style.display = 'block';
+        }
+
+        function showQRCode() {
+    // Get the QR code element
+    var qrCodeElement = document.getElementById('qr-code');
+    
+    // Toggle visibility of the QR code
+    qrCodeElement.style.display = (qrCodeElement.style.display === 'none' || qrCodeElement.style.display === '') ? 'block' : 'none';
+    
+    // Replace the src attribute with the actual QR code image source if it's being displayed
+    if (qrCodeElement.style.display === 'block') {
+        qrCodeElement.getElementsByTagName('img')[0].src = 'assets/images/qr.png'; // Replace with your QR code image source
+    }
+
+    // Display additional steps for UPI payment
+    document.getElementById('upi-pin').style.display = 'block';
+}
+
+//
+function confirmOrder() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const phoneNumber = document.getElementById('phoneNumber').value; // Added mobile number field
+    const address = document.getElementById('address').value;
+    const paymentMode = document.querySelector('.payment-option.selected').innerText;
+    const tipAmount = parseFloat(document.getElementById('tip-amount').value) || 0;
+
+    // Log the data before sending to the server
+    console.log("User's First Name:", firstName);
+    console.log("User's Last Name:", lastName);
+    console.log("User's Email:", email);
+    console.log("User's Mobile Number:", phoneNumber); // Log mobile number
+    console.log("Cart Items:", cartItems);
+    console.log("Address:", address);
+    console.log("Payment Mode:", paymentMode);
+    console.log("Tip Amount:", tipAmount);
+
+    // Send order data to the server
+    fetch('/save-order', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: phoneNumber, // Include mobile number in the request payload
+            cartItems: cartItems,
+            address: address,
+            paymentMode: paymentMode,
+            tipAmount: tipAmount
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Order data saved successfully
+            console.log('Order data saved successfully');
+
+            // Display confirmation message
+            document.getElementById('confirmation-message').style.display = 'block';
+
+            // Optionally, clear the cart after successful save
+            localStorage.removeItem('cartItems');
+
+            // Redirect to the home page after a delay (adjust the time as needed)
+            setTimeout(() => {
+                window.location.href = '/home.html';
+            }, 3000); // Redirect after 3 seconds
+        } else {
+            // Handle errors
+            console.error('Error saving order data');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+    
+
+
+    </script>
+</body>
+
+</html>

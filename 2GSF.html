@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url(assets/images/shop4.webp);
+      
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    .menu-item label {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+    .quantity-input {
+      width: 40px;
+      text-align: center;
+      margin-right: 10px;
+    }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .container img {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      max-width: 100px; /* Adjust the size as needed */
+      border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+    }
+
+    .go-back-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #total-display { 
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black; /* Green color, you can adjust as needed */
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="home.html"> <img src="assets/images/logo.png" alt="Logo" height="70" style="border-radius: 50px;">  </a>
+    <h1>Gomantak Special Fry </h1>
+    <form id="order-form">
+      <div class="menu-item">
+        <input type="checkbox" id="item1" name="items" data-price="350">
+        <label for="item1">Surmai Tawa Fry - 350 Rs</label>
+        <input type="number" class="quantity-input" id="quantity1" value="1" min="1" aria-label="Quantity for Burger">
+      </div>
+      <div class="menu-item">
+        <input type="checkbox" id="item2" name="items" data-price="500">
+        <label for="item2">Pomfret Billa Tawa Fry - 500 Rs</label>
+        <input type="number" class="quantity-input" id="quantity2" value="1" min="1" aria-label="Quantity for Pizza">
+      </div>
+      <div class="menu-item">
+        <input type="checkbox" id="item3" name="items" data-price="320">
+        <label for="item3">Halwa Jumbo Fry- 320 Rs</label>
+        <input type="number" class="quantity-input" id="quantity3" value="1" min="1" aria-label="Quantity for Salad">
+      </div>
+      <div class="menu-item">
+        <input type="checkbox" id="item4" name="items" data-price="290">
+        <label for="item4">Rawas Tawa Fry - 290 Rs</label>
+        <input type="number" class="quantity-input" id="quantity4" value="1" min="1" aria-label="Quantity for Sandwich">
+      </div>
+
+      <div class="menu-item">
+        <input type="checkbox" id="item5" name="items" data-price="185">
+        <label for="item5">Bangda Tawa Fry - 185 Rs</label>
+        <input type="number" class="quantity-input" id="quantity5" value="1" min="1" aria-label="Quantity for ">
+      </div>
+
+      <div class="menu-item">
+        <input type="checkbox" id="item6" name="items" data-price="170">
+        <label for="item4">Bombil Fry - 170 Rs</label>
+        <input type="number" class="quantity-input" id="quantity6" value="1" min="1" aria-label="Quantity for Sandwich">
+      </div>
+
+      <div class="menu-item">
+        <input type="checkbox" id="item7" name="items" data-price="190">
+        <label for="item4">Mandeli Fry - 190 Rs</label>
+        <input type="number" class="quantity-input" id="quantity7" value="1" min="1" aria-label="Quantity for Sandwich">
+      </div>
+
+      <div class="menu-item">
+        <input type="checkbox" id="item8" name="items" data-price="375">
+        <label for="item4">Squid Tawa Fry - 375 Rs</label>
+        <input type="number" class="quantity-input" id="quantity8" value="1" min="1" aria-label="Quantity for Sandwich">
+      </div>
+
+      <div class="menu-item">
+        <input type="checkbox" id="item9" name="items" data-price="325">
+        <label for="item4">Mori(Shark) Fry - 325 Rs</label>
+        <input type="number" class="quantity-input" id="quantity9" value="1" min="1" aria-label="Quantity for Sandwich">
+      </div>
+
+      <div class="menu-item">
+        <input type="checkbox" id="item10" name="items" data-price="485">
+        <label for="item4">king Prawns Tawa Fry - 485 Rs</label>
+        <input type="number" class="quantity-input" id="quantity10" value="1" min="1" aria-label="Quantity for Sandwich">
+      </div>
+
+      <div class="menu-item">
+        <input type="checkbox" id="item11" name="items" data-price="315">
+        <label for="item4">Prawns Fry - 315 Rs</label>
+        <input type="number" class="quantity-input" id="quantity11" value="1" min="1" aria-label="Quantity for Sandwich">
+      </div>
+
+      <div class="menu-item">
+        <input type="checkbox" id="item12" name="items" data-price="295">
+        <label for="item4">Prawns Koliwada - 295 Rs</label>
+        <input type="number" class="quantity-input" id="quantity12" value="1" min="1" aria-label="Quantity for Sandwich">
+      </div>
+
+      <div class="menu-item">
+        <input type="checkbox" id="item4" name="items" data-price="170">
+        <label for="item4">Bombil Fry - 170 Rs</label>
+        <input type="number" class="quantity-input" id="quantity4" value="1" min="1" aria-label="Quantity for Sandwich">
+      </div>
+
+      
+
+<!-- Modify your checkout button to trigger the checkout function -->
+<button type="button" class="checkout-btn" onclick="checkout()">Checkout</button>
+
+<!-- Add this div to display the total -->
+<div id="total-display"></div>      
+
+      <a href="order.html">
+        <button type="button" class="go-back-btn" onclick="goBack()">Go Back</button>
+      </a>
+
+    </form>
+
+  </div>
+
+  <script>
+   function checkout() {
+  const form = document.getElementById('order-form');
+  const items = form.querySelectorAll('input[name="items"]:checked');
+  let total = 0;
+
+  items.forEach(item => {
+    const price = parseFloat(item.dataset.price);
+    const quantityInputId = 'quantity' + item.id.slice(-1);
+    const quantity = parseInt(form.querySelector(`#${quantityInputId}`).value);
+    total += price * quantity;
+  });
+
+  // Display the total in the specified element
+  const totalDisplay = document.getElementById('total-display');
+  totalDisplay.innerHTML = `Total: $${total.toFixed(2)}`;
+}
+function checkout() {
+    const form = document.getElementById('order-form');
+    const items = form.querySelectorAll('input[name="items"]:checked');
+    let total = 0;
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Retrieve existing cart items
+
+    items.forEach(item => {
+        const price = parseFloat(item.dataset.price);
+        const quantityInputId = 'quantity' + item.id.slice(-1);
+        const quantity = parseInt(form.querySelector(`#${quantityInputId}`).value);
+        total += price * quantity;
+        cartItems.push({
+            id: item.id,
+            name: item.nextElementSibling.textContent.trim(),
+            quantity: quantity,
+            price: price
+        });
+    });
+
+    // Store the updated cart items in localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Display the total in the specified element
+    const totalDisplay = document.getElementById('total-display');
+    totalDisplay.innerHTML = `Total: ${total.toFixed(2)} Rs`;
+}
+
+  </script>
+
+<footer style="text-align: center;">
+    <p>© 2024 KonkanSwad. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

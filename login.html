@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            /* text-align: center;
+            margin: 50px; */
+            margin: 0;
+            padding: 0;
+            background-image: url(assets/images/shop4.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            /* Added margin-top to create a gap */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Updated style for reset password button */
+        .options button[type="button"] {
+            background-color: transparent;
+            color: #4CAF50;
+            padding: 10px 0;
+            margin: 8px 0;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s ease-in-out;
+        }
+
+        .options button[type="button"]:hover {
+            border-bottom: 1px solid #4CAF50;
+        }
+
+        .social-login {
+            margin-top: 20px;
+        }
+
+        .social-login button {
+            width: 100%;
+            margin-bottom: 10px;
+            background-color: rgb(242, 229, 229);
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 400;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        .divider {
+            margin: 20px 0;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+
+        .or {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            background-color: #fff;
+            padding: 0 10px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            margin-right: 10px;
+        }
+
+        .empty-space-text {
+            color: #777;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        #bd {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            background-color: #fff;
+            margin: 0 auto;
+            width: fit-content;
+            color: black;
+
+        }
+
+        header {
+            background-color: rgb(235, 88, 34);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Center the text and keep space for logo on the left */
+        }
+
+        header img {
+            max-height: 50px;
+            max-width: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        #bck{
+            background-image: url(custbeach.jpg);
+            background-repeat: repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="home.html">
+            <img src="assets/images/logo.png" alt="Logo" height="100" style="border-radius: 50px;">
+        </a>
+        <h1 id="bd">कोकणस्वाद</h1>
+    </header>
+<div id="bck">
+    <div class="container">
+        <h2 style="text-align: center;">What's your phone number or email?
+        </h2>
+        <form action="/login" method="post" id="loginForm">
+
+            <label for="email" style="text-align: left;">Email or Phone:</label>
+            <input type="text" id="email" name="email" placeholder="Enter email or phone "  required>
+
+            <label for="password" style="text-align: left;">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+            <div style="text-align: center;">
+                <button type="submit">Sign in</button>
+            </div>
+            <div class="options">
+                <label for="keepSignedIn">
+                    <input type="checkbox" id="keepSignedIn" name="keepSignedIn"> Keep me signed in
+                </label>
+                <!-- Updated button for reset password -->
+                <button type="button" onclick="resetPassword()">Reset Password</button>
+            </div>
+            <div class="divider">
+                <span class="or">or</span>
+            </div>
+            <div class="social-login">
+                <button onclick="loginWithGoogle()"><img src="assets/images/gogem.png" alt="Google" height="18" width="auto">   Continue with Google</button>
+                <button onclick="loginWithApple()"><img src="assets/images/apem.png" alt="Google" height="18" width="auto">Continue with Apple</button>
+                <button onclick="loginWithFacebook()"><img src="assets/images/fb.png" alt="Google" height="18" width="auto">Continue with Facebook</button>
+            </div>
+            <div class="empty-space-text" style="text-align: center;">Don't have an account? <a
+                    href="register.html">Sign up here</a>.</div>
+        </form>
+    </div>
+
+    <script>
+        function loginWithGoogle() {
+            // Implement Google login logic
+            alert("Login with Google");
+        }
+
+        function loginWithApple() {
+            // Implement Apple login logic
+            alert("Login with Apple");
+        }
+
+        function loginWithFacebook() {
+            // Implement Facebook login logic
+            alert("Login with Facebook");
+        }
+
+        function resetPassword() {
+            // Implement reset password logic
+            alert("Reset Password");
+        }
+    </script>
+    <footer style="text-align: center;">
+        <p>© 2024 KonkanSwad. All rights reserved.</p>
+    </footer>
+</div>
+</body>
+
+</html>

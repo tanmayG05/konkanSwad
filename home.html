@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KonkanSwad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            scroll-behavior: smooth;
+            /* text-align: center; */
+        }
+
+        header {
+            background-color: rgb(235, 88, 34);
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease-out;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        
+        nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3ch;
+    margin-left: auto;
+    max-width: 800px; 
+    width: 100%;
+}
+
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        #search-bar {
+            flex: 1;
+            margin: 0 15px;
+        }
+
+        #search-bar+button[type="submit"] {
+    background-color: transparent;
+    border: 3px solid transparent;
+    transition: border-color 0.3s, transform 0.3s; /* Add transform to the transition property */
+    color: white;
+    font-size: 17px;
+}
+
+#search-bar+button[type="submit"]:hover {
+    border-color: brown;
+    transform: scale(1.1); /* Add scaling effect on hover */
+}
+
+
+        /* #login-signup {
+            margin-right: 20px;
+        }
+
+      
+
+        #login-signup a {
+            text-decoration: none;
+        }
+
+        #login-signup a button {
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+
+        #login-signup a button.login {
+            background-color: transparent;
+            border: 2px solid black;
+            border-radius: 50px;
+            margin-right: 0ch;
+        }
+
+        #login-signup a button.register {
+            background-color: transparent;
+            border: 2px solid black;
+            border-radius: 15px;
+            margin-right: 1ch;
+
+        }
+
+        #login-signup a button:hover {
+            transform: scale(1.05);
+        }
+
+        #login-signup a button.login:hover {
+            background-color: rgb(217, 26, 26);
+        }
+
+        #login-signup a button.register:hover {
+            border: 2px black solid;
+            color: darkred;
+
+        }
+ */
+
+        #address-form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .bb {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('assets/images/ox1.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .IS {
+            padding: 10px 15px;
+            background-color: rgb(235, 88, 34);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover button {
+            background-color: brown;
+        }
+
+        header.scrolled {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* hours & location */
+        
+        .container{
+            border-radius: 8px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width:1300px;
+            background-image: url(assets/images/beachz.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(235, 88, 34);
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .hours-location {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .hours,
+        .location {
+            flex: 1;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .hours h3{
+            color: black;
+            font-style: italic;
+            font-family:unset;
+            font-size: x-large
+            
+        }
+        .location h3 {
+            color: rgb(235, 88, 34);
+            margin-bottom: 10px;
+        }
+
+        .days {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .day {
+            flex: 1;
+            text-align: center;
+        }
+
+        .address,
+        .map {
+            width: 48%;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .address h3,
+        .map h3 {
+            color: rgb(235, 88, 34);
+            margin-bottom: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Hover Effects */ 
+        .map:hover,
+        iframe:hover {
+            transform: scale(1.02);
+        }
+
+        .address {
+            margin-left: 15ch;
+            float: left;
+            width: 30%;
+           
+        }
+
+        .map {
+            float: right;
+            width: 48%;
+            margin-right: 3%;
+        }
+
+        .address-map-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* cart css  */
+#cart {
+    margin-left: auto;
+    margin-right: 5ch;
+    position: relative;
+    transition: transform 0.3s; /* Add transition */
+}
+
+.cart-button {
+    background: none;
+    border: 2px solid black; /* Add border styles */
+    border-radius: 50%; /* Make it circular */
+    margin-right: 0ch;
+    color: white;
+    cursor: pointer;
+    padding: 10px; /* Increase padding for better visibility */
+    position: relative;
+    transition: transform 0.3s; /* Add transition */
+}
+
+#cart:hover {
+    transform: scale(1.1); /* Adjust the scale as needed */
+}
+
+.cart-button:hover {
+    transform: scale(1.1); /* Adjust the scale as needed */
+}
+
+ #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #popup-message {
+            margin: 0;
+        }
+        
+    
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="assets/images/logo.png" alt="Logo" height="70" style="border-radius: 50px;">
+        </div>
+
+        <nav>
+            <a href="CustCare.html"><button class="IS">Customer Care</button></a>
+            <a href="About.html"><button class="IS">About</button></a>
+            <a href="order.html"><button class="IS">Order</button></a>
+
+            
+            <input type="text" id="search-bar" class="fish" placeholder="कुठले मासे🐟 खायला आवडेल ?which fish ?">
+            
+            <button type="submit" style="border-radius: 7px;">Search</button>
+        </nav>
+
+        <div id="cart">
+            <a href="cart.html">
+                <button class="cart-button">
+                    <img src="assets/images/cartx.png" alt="Cart" height="60" width="60" style="border-radius: 50%;">
+                </button>
+            </a>
+        </div>
+
+        <!-- <div id="login-signup">
+
+            <a href="login.html">
+
+                <button class="login"><img src="assets/images/unknwn.png" alt="unknwn" height="17" width="16"> Login</button>
+            </a>
+
+            <a href="register.html">
+                <button class="register">Register</button>
+            </a>
+        </div> -->
+    </header>
+    <div class="bb">
+        <div id="address-form">
+            <h2>Enter Delivery Address</h2>
+            <form action="#">
+                <input type="text" class="location"  placeholder="Enter your delivery address" required><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('header');
+            var scrolled = window.scrollY > 0;
+            header.classList.toggle('scrolled', scrolled);
+        });
+    </script>
+
+    
+        <div class="container">
+        <div class="hours-location">
+            <div class="hours">
+                <h1 style="font-weight: 400; margin-top: 0ch;">Come Dine In</h1>
+
+                <h3 style="font-size:xx-large"><strong>HOURS & LOCATION</strong></h3>
+                <div class="days">
+                    <div class="day">
+                        <p style="color: rgb(235, 88, 34);"><b>Monday - Friday:</b></p>
+                        <p >11am - 9pm</p>
+                    </div>
+                    <div class="day">
+                        <p style="color: rgb(235, 88, 34);"><b>Saturday:</b></p>
+                        <p>12pm - 6pm</p>
+                    </div>
+                    <div class="day">
+                        <p style="color: rgb(235, 88, 34);"><b>Sunday:</b></p>
+                        <p>12pm - 5pm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="address-map-container">
+    <div class="address" style="width: 50%;">
+        <h3>KonKan Swad</h3>
+        <pre style="font-size: larger;">
+            <strong>
+Behram baug rd ,
+Jogeshwari(west)
+Mumbai - 400102
+            </strong>
+        </pre>
+        
+        <!-- Social media icons -->
+        <div style="text-align: left; margin-top: 10px;">
+            <!-- Replace the href values with the actual URLs of your social media profiles -->
+            <a href="#" target="_blank" style="margin-right: 10px;"><img src="assets/images/fb.png" alt="Facebook" height="30"></a>
+            <a href="#" target="_blank" style="margin-right: 10px;"><img src="assets/images/twittr.png" alt="Twitter" height="30"></a>
+            <a href="#" target="_blank" style="margin-right: 10px;"><img src="assets/images/instagrm.png" alt="Instagram" height="30"></a>
+        </div>
+        
+        <!-- New paragraph for joining the community -->
+        <p style="text-align: left; font-family: 'Times New Roman', Times, serif;font-size:large; color: rgb(235, 88, 34); margin-top: 10px;"><em><b>Join our community for the latest updates and offers!</b></em></p>
+    </div>
+
+    <div class="map" style="width: 50%;">
+        <h3>Map</h3>
+        <iframe id="mapq"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.1666975551666!2d72.84005747497925!3d19.144179082074483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b630d80a7285%3A0xc48b23dc2099c9fb!2sKonkan%20Swad%20Gomantak%20Food%20Jogeshwari%20West!5e0!3m2!1sen!2sin!4v1707222914101!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchButton = document.querySelector('button[type="submit"]');
+        const searchInput = document.getElementById('search-bar');
+        const locationInput = document.querySelector('.location');
+
+        searchButton.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const popUp = document.getElementById('popup');
+
+            if (searchTerm === '') {
+                showPopup(`Please enter a 🐟 `);
+            } else {
+                // Replace this with your actual list of available fishes
+                const availableFishes = ['surmai','prawns','pomfret','halwa','rawas','bangda','bombil','mandeli','squid','mori','king prawns','crab','shell'];
+
+                if (availableFishes.includes(searchTerm)) {
+                    showPopup(`Great choice! ${searchTerm} 🐟 is available!`);
+                } else {
+                    showPopup(`Sorry , Sir/Madam ! ${searchTerm} 🐟 is not available!`);
+                }
+            }
+        });
+
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const userLocation = locationInput.value.trim().toLowerCase();
+            const popUp = document.getElementById('popup');
+
+            if (userLocation === '') {
+                showPopup(`Please enter a delivery location, Sir.`);
+            } else {
+                // Replace this with your actual list of available locations
+                const availableLocations = ['dadar','mahim','worli','kurla','panvel','jogeshwari','mumbai central','chembur','asalpha','andheri','borivali','nallasopara','virar','vidyavihar'];
+
+                if (availableLocations.includes(userLocation)) {
+                    showPopup(`Delivery to ${userLocation} 📍 is available!`);
+                } else {
+                    showPopup(`Sorry, we do not deliver to ${userLocation} 📍`);
+                }
+            }
+        });
+
+        function showPopup(message) {
+            const popUp = document.getElementById('popup');
+            const popUpMessage = document.getElementById('popup-message');
+
+            popUpMessage.textContent = message;
+            popUp.style.display = 'block';
+
+            setTimeout(function () {
+                popUp.style.display = 'none';
+            }, 1000); //time of the pop up message
+        }
+    });
+</script>
+
+
+
+<div id="popup">
+        <p id="popup-message"></p>
+    </div>
+
+
+
+
+<footer style="position:relative; bottom: 0; width: 100%; text-align: center; background-color: rgb(231, 149, 119); color: black; padding: 3px;">
+    <p>© 2024 KonkanSwad. All rights reserved.</p>
+</footer>
+ 
+</body>
+
+</html>

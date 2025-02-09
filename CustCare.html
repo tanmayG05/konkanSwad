@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Care - Food Delivery System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            background-image: url(assets/images/beachz.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        header {
+            background-color: #FF6347;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        section {
+            margin: 40px 20px;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #bd {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            background-color: #fff;
+            margin: 0 auto;
+            width: fit-content;
+            color: #333;
+        }
+
+        #Srb {
+            background-color: green;
+            color: white;
+        }
+
+        #Srb:hover {
+
+            background-color: rgb(19, 140, 19);
+        }
+       
+    </style>
+</head>
+
+<body>
+    <header>
+        
+        <a href="home.html">
+            <img src="assets/images/logo.png" alt="Logo" height="70" style="border-radius: 50px;">
+        </a>
+        <h1 id="bd">कोकणस्वाद</h1>
+
+    </header>
+<div id="dim">
+    <section>
+        <h2>Contact Information</h2>
+        <p>If you have any questions, concerns, or feedback, feel free to reach out to our customer support team.</p>
+        <p>Email: <a href="mailto:support@KonkanSwad.com">support@KonkanSwad.com</a></p>
+        <p>Phone: +91 4897561624</p>
+    </section>
+
+    <section>
+        <h2>FAQs</h2>
+        <p>Check out our frequently asked questions for quick answers to common queries.</p>
+        <ul>
+            <li><strong>Q:</strong> How can I track my order?</li>
+            <li><strong>A:</strong> You can track your order in real-time through our mobile app or website.</li>
+            <li><strong>Q:</strong> What payment methods do you accept?</li>
+            <li><strong>A:</strong> We accept credit/debit cards and online payment methods.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Submit a Request</h2>
+        <p>If you couldn't find the information you need, you can submit a support request using the form below.</p>
+        <form action="submit_request.php" method="post">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit" id="Srb">Submit Request</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Additional Information</h2>
+        <p>Explore more about our food delivery system and services.</p>
+        <!-- Add more content as needed -->
+        <ul>
+            <li><strong>Our Service Areas:</strong> We currently operate in major cities across the country. Check our
+                app to see if we deliver to your location.</li>
+            <li><strong>Special Offers:</strong> Keep an eye out for our special discounts and promotions. Follow us on
+                social media for the latest updates.</li>
+            <li><strong>Customer Loyalty Program:</strong> Join our loyalty program to earn points with every order and
+                enjoy exclusive rewards.</li>
+            <li><strong>Community Engagement:</strong> We actively participate in community events and support local
+                initiatives. Learn more about our community involvement on our blog.</li>
+        </ul>
+    </section>
+</div>
+    <footer>
+        <p>© 2024 KonkanSwad. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
